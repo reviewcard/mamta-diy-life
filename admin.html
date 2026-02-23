@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Admin Panel - Mamta DIY Life</title>
-
+<title>Admin Login</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
 <div class="admin-container">
 
-<h2>Admin Panel - Add Product</h2>
+<h2>Admin Login</h2>
 
-<input type="text" id="name" placeholder="Product Name">
+<input type="password" id="password" placeholder="Enter Password">
 
-<input type="text" id="price" placeholder="Price">
-
-<input type="text" id="image" placeholder="Image URL">
-
-<textarea id="desc" placeholder="Description"></textarea>
-
-<button onclick="addProduct()">Add Product</button>
+<button onclick="login()">Login</button>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+function login(){
+
+let pass="12345";
+
+let input=document.getElementById("password").value;
+
+if(input===pass){
+
+window.location="dashboard.html";
+
+}
+else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
