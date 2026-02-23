@@ -1,26 +1,53 @@
-const products = [
+function getProducts(){
 
-{
-id:1,
-name:"Designer Blouse",
-price:799,
-image:"images/products/blouse1.jpg"
-},
+let products = localStorage.getItem("products");
 
-{
-id:2,
-name:"Wedding Lehenga",
-price:2499,
-image:"images/products/lehenga1.jpg"
+return products ? JSON.parse(products) : [];
+
 }
 
-];
+
+function saveProducts(products){
+
+localStorage.setItem("products", JSON.stringify(products));
+
+}
 
 
 
-let container = document.getElementById("products");
+function addProduct(){
 
-if(container){
+let name = document.getElementById("name").value;
+let price = document.getElementById("price").value;
+let image = document.getElementById("image").value;
+let desc = document.getElementById("desc").value;
+
+let products = getProducts();
+
+products.push({
+name,
+price,
+image,
+desc
+});
+
+saveProducts(products);
+
+alert("Product Added Successfully");
+
+}
+
+
+
+function loadProducts(){
+
+let container = document.getElementById("product-list");
+
+if(!container) return;
+
+let products = getProducts();
+
+container.innerHTML = "";
 
 products.forEach(product=>{
 
@@ -34,10 +61,12 @@ container.innerHTML += `
 
 <p>₹${product.price}</p>
 
-<a href="product.html?id=${product.id}"
+<p>${product.desc}</p>
+
+<a href="https://wa.me/919927039737?text=I want ${product.name}"
 class="btn">
 
-View Product
+Order on WhatsApp
 
 </a>
 
@@ -48,3 +77,6 @@ View Product
 });
 
 }
+
+
+loadProducts();
